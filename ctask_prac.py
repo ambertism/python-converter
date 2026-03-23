@@ -1,6 +1,6 @@
 validInputs = {
     "weight" : ["g", "kg", "mg", "lbs", "oz", "ton"], # done
-    "volume" : ["ml", "l", "fl oz", "cup", "pint", "quart", "gal", "tbsp", "tsp",], # done
+    "volume" : ["ml", "l", "floz", "cup", "pint", "quart", "gal", "tbsp", "tsp",], # done
     "length" : ["in", "cm", "m", "km", "ft", "mi", "yd", "mm", "ly",], # done
     "temperature" : ["c", "k", "f",] # done
 }
@@ -779,11 +779,20 @@ elif usrinp == "temperature":
     if inp2 == "c" and inp3 == "c":
         output(c_c, conv)
     elif inp2 == "c" and inp3 == "k":
-        c_k(conv)
+        output(c_k, conv)
     elif inp2 == "c" and inp3 == "f":
-        c_f(conv)
+        output(c_f, conv)
 
     elif inp2 == "k" and inp3 == "c":
-        k_c(conv)
+        output(k_c, conv)
     elif inp2 == "k" and inp3 == "k":
-        k_k(conv)
+        output(k_k, conv)
+    elif inp2 == "k" and inp3 == "f":
+        output(k_f, conv)
+
+    elif inp2 == "f" and inp3 == "c":
+        output(f_c, conv)
+    elif inp2 == "f" and inp3 == "k":
+        output(f_k, conv)
+    elif inp2 == "f" and inp3 == "f":
+        output(f_f, conv)
