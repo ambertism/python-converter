@@ -11,39 +11,39 @@ ok so this code is basically a thing to convert diff types of length, weight, te
 
 ## CURRENT CAPABILITIES
 **weight**
-grams (g)
-kilograms (kg)
-miligrams (mg)
-pounds (lbs)
-ounces (oz)
-tonnes (ton)
+grams (g),
+kilograms (kg),
+miligrams (mg),
+pounds (lbs),
+ounces (oz),
+tonnes (ton),
 
 **volume**
-mililitres (ml)
-litres (l)
-fluid ounces (floz)
-cups (cup)
-pints (pint)
-quarts (quart)
-gallons (gal)
-tablespoons (tbsp)
-teaspoons (tsp)
+mililitres (ml),
+litres (l),
+fluid ounces (floz),
+cups (cup),
+pints (pint),
+quarts (quart),
+gallons (gal),
+tablespoons (tbsp),
+teaspoons (tsp),
 
 **length**
-inches (in)
-centimetres (cm)
-metres (m)
-kilometres (km)
-feet (ft)
-miles (mi)
-yards (yd)
-milimetres (mm)
-light-years (ly)
+inches (in),
+centimetres (cm),
+metres (m),
+kilometres (km),
+feet (ft),
+miles (mi),
+yards (yd),
+milimetres (mm),
+light-years (ly),
 
 **temperature**
-celcius (c)
-kelvin (k)
-fahrenheit (f)
+celcius (c),
+kelvin (k),
+fahrenheit (f),
 
 
 # please dont steal my code its mine :3
