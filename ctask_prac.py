@@ -20,9 +20,12 @@ def onboarding():
         check = False
         got_input = False
         what_to_do_if_user_is_incompetent_and_does_a_bad_input(check)
-def what_to_do_if_user_is_incompetent_and_does_a_bad_input(check):
+def what_to_do_if_user_is_incompetent_and_does_a_bad_input(check, valid_options=None):
     if not(check):
         print("you incompetent user. how dare you. how dare you put an invalid response. please leave this program and come back when you want to stop acting childish.")
+        if valid_options:
+            for option in valid_options:
+                print(f"  - {option}")
         exit(code = "i dont like u")
     elif check:
         print("thank you for putting a valid input.")
@@ -513,6 +516,7 @@ def km_mm(km):
     return mm
 def km_ly(km):
     ly = km / 9461000000000
+    return ly
 # - - - readability break - - -
 def ft_in(ft):
     inches = ft * 12
@@ -679,7 +683,7 @@ def k_f(k):
     return f
 # - - - readability break - - -
 def f_c(f):
-    c = (f - 32) * (9/5)
+    c = (f - 32) * (5/9)
     return c
 def f_k(f):
     k = (((f - 32) * (9/5)) + 273.15)
@@ -689,6 +693,7 @@ def f_f(f):
     return f
 # - - - readability break - - -
 def output(func, conv):
+    conv = float(conv)
     print(f"your output was {func(conv)}, and your input was {conv}")
 
 got_input = False
@@ -700,82 +705,462 @@ if usrinp == "weight":
     print(validInputStatement)
     inp2 = input().lower()
     inp3 = input("what would you like to convert to?: ").lower()
-    check = False
-    check2 = False
-    for i in validInputs[usrinp]:
-        while check == False:
-            if inp2 == i:
-                check = True
-            else:
-                check = False
-                what_to_do_if_user_is_incompetent_and_does_a_bad_input(check)
-        while check2 == False:
-            if inp3 == i:
-                check2 = True
-            else:
-                check2 = False
-                what_to_do_if_user_is_incompetent_and_does_a_bad_input(check2)
+    if inp2 not in validInputs[usrinp]:
+        what_to_do_if_user_is_incompetent_and_does_a_bad_input(False)
+    if inp3 not in validInputs[usrinp]:
+        what_to_do_if_user_is_incompetent_and_does_a_bad_input(False)
+    conv = input("what number would you like to convert from?: ")
+
+    if inp2 == "g" and inp3 == "g":
+        output(g_g, conv)
+    elif inp2 == "g" and inp3 == "kg":
+        output(g_kg, conv)
+    elif inp2 == "g" and inp3 == "mg":
+        output(g_mg, conv)
+    elif inp2 == "g" and inp3 == "lbs":
+        output(g_lbs, conv)
+    elif inp2 == "g" and inp3 == "oz":
+        output(g_oz, conv)
+    elif inp2 == "g" and inp3 == "ton":
+        output(g_ton, conv)
+
+    elif inp2 == "kg" and inp3 == "g":
+        output(kg_g, conv)
+    elif inp2 == "kg" and inp3 == "kg":
+        output(kg_kg, conv)
+    elif inp2 == "kg" and inp3 == "mg":
+        output(kg_mg, conv)
+    elif inp2 == "kg" and inp3 == "lbs":
+        output(kg_lbs, conv)
+    elif inp2 == "kg" and inp3 == "oz":
+        output(kg_oz, conv)
+    elif inp2 == "kg" and inp3 == "ton":
+        output(kg_ton, conv)
+
+    elif inp2 == "mg" and inp3 == "g":
+        output(mg_g, conv)
+    elif inp2 == "mg" and inp3 == "kg":
+        output(mg_kg, conv)
+    elif inp2 == "mg" and inp3 == "mg":
+        output(mg_mg, conv)
+    elif inp2 == "mg" and inp3 == "lbs":
+        output(mg_lbs, conv)
+    elif inp2 == "mg" and inp3 == "oz":
+        output(mg_oz, conv)
+    elif inp2 == "mg" and inp3 == "ton":
+        output(mg_ton, conv)
+
+    elif inp2 == "lbs" and inp3 == "g":
+        output(lbs_g, conv)
+    elif inp2 == "lbs" and inp3 == "kg":
+        output(lbs_kg, conv)
+    elif inp2 == "lbs" and inp3 == "mg":
+        output(lbs_mg, conv)
+    elif inp2 == "lbs" and inp3 == "lbs":
+        output(lbs_lbs, conv)
+    elif inp2 == "lbs" and inp3 == "oz":
+        output(lbs_oz, conv)
+    elif inp2 == "lbs" and inp3 == "ton":
+        output(lbs_ton, conv)
+
+    elif inp2 == "oz" and inp3 == "g":
+        output(oz_g, conv)
+    elif inp2 == "oz" and inp3 == "kg":
+        output(oz_kg, conv)
+    elif inp2 == "oz" and inp3 == "mg":
+        output(oz_mg, conv)
+    elif inp2 == "oz" and inp3 == "lbs":
+        output(oz_lbs, conv)
+    elif inp2 == "oz" and inp3 == "oz":
+        output(oz_oz, conv)
+    elif inp2 == "oz" and inp3 == "ton":
+        output(oz_ton, conv)
+
+    elif inp2 == "ton" and inp3 == "g":
+        output(ton_g, conv)
+    elif inp2 == "ton" and inp3 == "kg":
+        output(ton_kg, conv)
+    elif inp2 == "ton" and inp3 == "mg":
+        output(ton_mg, conv)
+    elif inp2 == "ton" and inp3 == "lbs":
+        output(ton_lbs, conv)
+    elif inp2 == "ton" and inp3 == "oz":
+        output(ton_oz, conv)
+    elif inp2 == "ton" and inp3 == "ton":
+        output(ton_ton, conv)
 
 elif usrinp == "volume":
     print(validInputStatement)
     inp2 = input().lower()
     inp3 = input("what would you like to convert to?: ").lower()
-    check = False
-    check2 = False
-    for i in validInputs[usrinp]:
-        while check == False:
-            if inp2 == i:
-                check = True
-            else:
-                check = False
-                what_to_do_if_user_is_incompetent_and_does_a_bad_input(check)
-        while check2 == False:
-            if inp3 == i:
-                check2 = True
-            else:
-                check2 = False
-                what_to_do_if_user_is_incompetent_and_does_a_bad_input(check2)
+    if inp2 not in validInputs[usrinp]:
+        what_to_do_if_user_is_incompetent_and_does_a_bad_input(False)
+    if inp3 not in validInputs[usrinp]:
+        what_to_do_if_user_is_incompetent_and_does_a_bad_input(False)
+    conv = input("what number would you like to convert from?: ")
+
+    if inp2 == "ml" and inp3 == "ml":
+        output(ml_ml, conv)
+    elif inp2 == "ml" and inp3 == "l":
+        output(ml_l, conv)
+    elif inp2 == "ml" and inp3 == "floz":
+        output(ml_floz, conv)
+    elif inp2 == "ml" and inp3 == "cup":
+        output(ml_cup, conv)
+    elif inp2 == "ml" and inp3 == "pint":
+        output(ml_pint, conv)
+    elif inp2 == "ml" and inp3 == "quart":
+        output(ml_quart, conv)
+    elif inp2 == "ml" and inp3 == "gal":
+        output(ml_gal, conv)
+    elif inp2 == "ml" and inp3 == "tbsp":
+        output(ml_tbsp, conv)
+    elif inp2 == "ml" and inp3 == "tsp":
+        output(ml_tsp, conv)
+
+    elif inp2 == "l" and inp3 == "ml":
+        output(l_ml, conv)
+    elif inp2 == "l" and inp3 == "l":
+        output(l_l, conv)
+    elif inp2 == "l" and inp3 == "floz":
+        output(l_floz, conv)
+    elif inp2 == "l" and inp3 == "cup":
+        output(l_cup, conv)
+    elif inp2 == "l" and inp3 == "pint":
+        output(l_pint, conv)
+    elif inp2 == "l" and inp3 == "quart":
+        output(l_quart, conv)
+    elif inp2 == "l" and inp3 == "gal":
+        output(l_gal, conv)
+    elif inp2 == "l" and inp3 == "tbsp":
+        output(l_tbsp, conv)
+    elif inp2 == "l" and inp3 == "tsp":
+        output(l_tsp, conv)
+
+    elif inp2 == "floz" and inp3 == "ml":
+        output(floz_ml, conv)
+    elif inp2 == "floz" and inp3 == "l":
+        output(floz_l, conv)
+    elif inp2 == "floz" and inp3 == "floz":
+        output(floz_floz, conv)
+    elif inp2 == "floz" and inp3 == "cup":
+        output(floz_cup, conv)
+    elif inp2 == "floz" and inp3 == "pint":
+        output(floz_pint, conv)
+    elif inp2 == "floz" and inp3 == "quart":
+        output(floz_quart, conv)
+    elif inp2 == "floz" and inp3 == "gal":
+        output(floz_gal, conv)
+    elif inp2 == "floz" and inp3 == "tbsp":
+        output(floz_tbsp, conv)
+    elif inp2 == "floz" and inp3 == "tsp":
+        output(floz_tsp, conv)
+
+    elif inp2 == "cup" and inp3 == "ml":
+        output(cup_ml, conv)
+    elif inp2 == "cup" and inp3 == "l":
+        output(cup_l, conv)
+    elif inp2 == "cup" and inp3 == "floz":
+        output(cup_floz, conv)
+    elif inp2 == "cup" and inp3 == "cup":
+        output(cup_cup, conv)
+    elif inp2 == "cup" and inp3 == "pint":
+        output(cup_pint, conv)
+    elif inp2 == "cup" and inp3 == "quart":
+        output(cup_quart, conv)
+    elif inp2 == "cup" and inp3 == "gal":
+        output(cup_gal, conv)
+    elif inp2 == "cup" and inp3 == "tbsp":
+        output(cup_tbsp, conv)
+    elif inp2 == "cup" and inp3 == "tsp":
+        output(cup_tsp, conv)
+
+    elif inp2 == "pint" and inp3 == "ml":
+        output(pint_ml, conv)
+    elif inp2 == "pint" and inp3 == "l":
+        output(pint_l, conv)
+    elif inp2 == "pint" and inp3 == "floz":
+        output(pint_floz, conv)
+    elif inp2 == "pint" and inp3 == "cup":
+        output(pint_cup, conv)
+    elif inp2 == "pint" and inp3 == "pint":
+        output(pint_pint, conv)
+    elif inp2 == "pint" and inp3 == "quart":
+        output(pint_quart, conv)
+    elif inp2 == "pint" and inp3 == "gal":
+        output(pint_gal, conv)
+    elif inp2 == "pint" and inp3 == "tbsp":
+        output(pint_tbsp, conv)
+    elif inp2 == "pint" and inp3 == "tsp":
+        output(pint_tsp, conv)
+
+    elif inp2 == "quart" and inp3 == "ml":
+        output(quart_ml, conv)
+    elif inp2 == "quart" and inp3 == "l":
+        output(quart_l, conv)
+    elif inp2 == "quart" and inp3 == "floz":
+        output(quart_floz, conv)
+    elif inp2 == "quart" and inp3 == "cup":
+        output(quart_cup, conv)
+    elif inp2 == "quart" and inp3 == "pint":
+        output(quart_pint, conv)
+    elif inp2 == "quart" and inp3 == "quart":
+        output(quart_quart, conv)
+    elif inp2 == "quart" and inp3 == "gal":
+        output(quart_gal, conv)
+    elif inp2 == "quart" and inp3 == "tbsp":
+        output(quart_tbsp, conv)
+    elif inp2 == "quart" and inp3 == "tsp":
+        output(quart_tsp, conv)
+
+    elif inp2 == "gal" and inp3 == "ml":
+        output(gal_ml, conv)
+    elif inp2 == "gal" and inp3 == "l":
+        output(gal_l, conv)
+    elif inp2 == "gal" and inp3 == "floz":
+        output(gal_floz, conv)
+    elif inp2 == "gal" and inp3 == "cup":
+        output(gal_cup, conv)
+    elif inp2 == "gal" and inp3 == "pint":
+        output(gal_pint, conv)
+    elif inp2 == "gal" and inp3 == "quart":
+        output(gal_quart, conv)
+    elif inp2 == "gal" and inp3 == "gal":
+        output(gal_gal, conv)
+    elif inp2 == "gal" and inp3 == "tbsp":
+        output(gal_tbsp, conv)
+    elif inp2 == "gal" and inp3 == "tsp":
+        output(gal_tsp, conv)
+
+    elif inp2 == "tbsp" and inp3 == "ml":
+        output(tbsp_ml, conv)
+    elif inp2 == "tbsp" and inp3 == "l":
+        output(tbsp_l, conv)
+    elif inp2 == "tbsp" and inp3 == "floz":
+        output(tbsp_floz, conv)
+    elif inp2 == "tbsp" and inp3 == "cup":
+        output(tbsp_cup, conv)
+    elif inp2 == "tbsp" and inp3 == "pint":
+        output(tbsp_pint, conv)
+    elif inp2 == "tbsp" and inp3 == "quart":
+        output(tbsp_quart, conv)
+    elif inp2 == "tbsp" and inp3 == "gal":
+        output(tbsp_gal, conv)
+    elif inp2 == "tbsp" and inp3 == "tbsp":
+        output(tbsp_tbsp, conv)
+    elif inp2 == "tbsp" and inp3 == "tsp":
+        output(tbsp_tsp, conv)
+
+    elif inp2 == "tsp" and inp3 == "ml":
+        output(tsp_ml, conv)
+    elif inp2 == "tsp" and inp3 == "l":
+        output(tsp_l, conv)
+    elif inp2 == "tsp" and inp3 == "floz":
+        output(tsp_floz, conv)
+    elif inp2 == "tsp" and inp3 == "cup":
+        output(tsp_cup, conv)
+    elif inp2 == "tsp" and inp3 == "pint":
+        output(tsp_pint, conv)
+    elif inp2 == "tsp" and inp3 == "quart":
+        output(tsp_quart, conv)
+    elif inp2 == "tsp" and inp3 == "gal":
+        output(tsp_gal, conv)
+    elif inp2 == "tsp" and inp3 == "tbsp":
+        output(tsp_tbsp, conv)
+    elif inp2 == "tsp" and inp3 == "tsp":
+        output(tsp_tsp, conv)
 
 elif usrinp == "length":
     print(validInputStatement)
     inp2 = input().lower()
     inp3 = input("what would you like to convert to?: ").lower()
-    check = False
-    check2 = False
-    for i in validInputs[usrinp]:
-        while check == False:
-            if inp2 == i:
-                check = True
-            else:
-                check = False
-                what_to_do_if_user_is_incompetent_and_does_a_bad_input(check)
-        while check2 == False:
-            if inp3 == i:
-                check2 = True
-            else:
-                check2 = False
-                what_to_do_if_user_is_incompetent_and_does_a_bad_input(check2)
+    if inp2 not in validInputs[usrinp]:
+        what_to_do_if_user_is_incompetent_and_does_a_bad_input(False)
+    if inp3 not in validInputs[usrinp]:
+        what_to_do_if_user_is_incompetent_and_does_a_bad_input(False)
+    conv = input("what number would you like to convert from?: ")
+
+    if inp2 == "in" and inp3 == "in":
+        output(in_in, conv)
+    elif inp2 == "in" and inp3 == "cm":
+        output(in_cm, conv)
+    elif inp2 == "in" and inp3 == "m":
+        output(in_m, conv)
+    elif inp2 == "in" and inp3 == "km":
+        output(in_km, conv)
+    elif inp2 == "in" and inp3 == "ft":
+        output(in_ft, conv)
+    elif inp2 == "in" and inp3 == "mi":
+        output(in_mi, conv)
+    elif inp2 == "in" and inp3 == "yd":
+        output(in_yd, conv)
+    elif inp2 == "in" and inp3 == "mm":
+        output(in_mm, conv)
+    elif inp2 == "in" and inp3 == "ly":
+        output(in_ly, conv)
+
+    elif inp2 == "cm" and inp3 == "in":
+        output(cm_in, conv)
+    elif inp2 == "cm" and inp3 == "cm":
+        output(cm_cm, conv)
+    elif inp2 == "cm" and inp3 == "m":
+        output(cm_m, conv)
+    elif inp2 == "cm" and inp3 == "km":
+        output(cm_km, conv)
+    elif inp2 == "cm" and inp3 == "ft":
+        output(cm_ft, conv)
+    elif inp2 == "cm" and inp3 == "mi":
+        output(cm_mi, conv)
+    elif inp2 == "cm" and inp3 == "yd":
+        output(cm_yd, conv)
+    elif inp2 == "cm" and inp3 == "mm":
+        output(cm_mm, conv)
+    elif inp2 == "cm" and inp3 == "ly":
+        output(cm_ly, conv)
+
+    elif inp2 == "m" and inp3 == "in":
+        output(m_in, conv)
+    elif inp2 == "m" and inp3 == "cm":
+        output(m_cm, conv)
+    elif inp2 == "m" and inp3 == "m":
+        output(m_m, conv)
+    elif inp2 == "m" and inp3 == "km":
+        output(m_km, conv)
+    elif inp2 == "m" and inp3 == "ft":
+        output(m_ft, conv)
+    elif inp2 == "m" and inp3 == "mi":
+        output(m_mi, conv)
+    elif inp2 == "m" and inp3 == "yd":
+        output(m_yd, conv)
+    elif inp2 == "m" and inp3 == "mm":
+        output(m_mm, conv)
+    elif inp2 == "m" and inp3 == "ly":
+        output(m_ly, conv)
+
+    elif inp2 == "km" and inp3 == "in":
+        output(km_in, conv)
+    elif inp2 == "km" and inp3 == "cm":
+        output(km_cm, conv)
+    elif inp2 == "km" and inp3 == "m":
+        output(km_m, conv)
+    elif inp2 == "km" and inp3 == "km":
+        output(km_km, conv)
+    elif inp2 == "km" and inp3 == "ft":
+        output(km_ft, conv)
+    elif inp2 == "km" and inp3 == "mi":
+        output(km_mi, conv)
+    elif inp2 == "km" and inp3 == "yd":
+        output(km_yd, conv)
+    elif inp2 == "km" and inp3 == "mm":
+        output(km_mm, conv)
+    elif inp2 == "km" and inp3 == "ly":
+        output(km_ly, conv)
+
+    elif inp2 == "ft" and inp3 == "in":
+        output(ft_in, conv)
+    elif inp2 == "ft" and inp3 == "cm":
+        output(ft_cm, conv)
+    elif inp2 == "ft" and inp3 == "m":
+        output(ft_m, conv)
+    elif inp2 == "ft" and inp3 == "km":
+        output(ft_km, conv)
+    elif inp2 == "ft" and inp3 == "ft":
+        output(ft_ft, conv)
+    elif inp2 == "ft" and inp3 == "mi":
+        output(ft_mi, conv)
+    elif inp2 == "ft" and inp3 == "yd":
+        output(ft_yd, conv)
+    elif inp2 == "ft" and inp3 == "mm":
+        output(ft_mm, conv)
+    elif inp2 == "ft" and inp3 == "ly":
+        output(ft_ly, conv)
+
+    elif inp2 == "mi" and inp3 == "in":
+        output(mi_in, conv)
+    elif inp2 == "mi" and inp3 == "cm":
+        output(mi_cm, conv)
+    elif inp2 == "mi" and inp3 == "m":
+        output(mi_m, conv)
+    elif inp2 == "mi" and inp3 == "km":
+        output(mi_km, conv)
+    elif inp2 == "mi" and inp3 == "ft":
+        output(mi_ft, conv)
+    elif inp2 == "mi" and inp3 == "mi":
+        output(mi_mi, conv)
+    elif inp2 == "mi" and inp3 == "yd":
+        output(mi_yd, conv)
+    elif inp2 == "mi" and inp3 == "mm":
+        output(mi_mm, conv)
+    elif inp2 == "mi" and inp3 == "ly":
+        output(mi_ly, conv)
+
+    elif inp2 == "yd" and inp3 == "in":
+        output(yd_in, conv)
+    elif inp2 == "yd" and inp3 == "cm":
+        output(yd_cm, conv)
+    elif inp2 == "yd" and inp3 == "m":
+        output(yd_m, conv)
+    elif inp2 == "yd" and inp3 == "km":
+        output(yd_km, conv)
+    elif inp2 == "yd" and inp3 == "ft":
+        output(yd_ft, conv)
+    elif inp2 == "yd" and inp3 == "mi":
+        output(yd_mi, conv)
+    elif inp2 == "yd" and inp3 == "yd":
+        output(yd_yd, conv)
+    elif inp2 == "yd" and inp3 == "mm":
+        output(yd_mm, conv)
+    elif inp2 == "yd" and inp3 == "ly":
+        output(yd_ly, conv)
+
+    elif inp2 == "mm" and inp3 == "in":
+        output(mm_in, conv)
+    elif inp2 == "mm" and inp3 == "cm":
+        output(mm_cm, conv)
+    elif inp2 == "mm" and inp3 == "m":
+        output(mm_m, conv)
+    elif inp2 == "mm" and inp3 == "km":
+        output(mm_km, conv)
+    elif inp2 == "mm" and inp3 == "ft":
+        output(mm_ft, conv)
+    elif inp2 == "mm" and inp3 == "mi":
+        output(mm_mi, conv)
+    elif inp2 == "mm" and inp3 == "yd":
+        output(mm_yd, conv)
+    elif inp2 == "mm" and inp3 == "mm":
+        output(mm_mm, conv)
+    elif inp2 == "mm" and inp3 == "ly":
+        output(mm_ly, conv)
+
+    elif inp2 == "ly" and inp3 == "in":
+        output(ly_in, conv)
+    elif inp2 == "ly" and inp3 == "cm":
+        output(ly_cm, conv)
+    elif inp2 == "ly" and inp3 == "m":
+        output(ly_m, conv)
+    elif inp2 == "ly" and inp3 == "km":
+        output(ly_km, conv)
+    elif inp2 == "ly" and inp3 == "ft":
+        output(ly_ft, conv)
+    elif inp2 == "ly" and inp3 == "mi":
+        output(ly_mi, conv)
+    elif inp2 == "ly" and inp3 == "yd":
+        output(ly_yd, conv)
+    elif inp2 == "ly" and inp3 == "mm":
+        output(ly_mm, conv)
+    elif inp2 == "ly" and inp3 == "ly":
+        output(ly_ly, conv)
 
 elif usrinp == "temperature":
     print(validInputStatement)
     inp2 = input().lower()
     inp3 = input("what would you like to convert to?: ").lower()
-    check = False
-    check2 = False
-    for i in validInputs[usrinp]:
-        while check == False:
-            if inp2 == i:
-                check = True
-            else:
-                check = False
-                what_to_do_if_user_is_incompetent_and_does_a_bad_input(check)
-        while check2 == False:
-            if inp3 == i:
-                check2 = True
-            else:
-                check2 = False
-                what_to_do_if_user_is_incompetent_and_does_a_bad_input(check2)
-    conv = input("what number would you like to convert from?").lower()
+    if inp2 not in validInputs[usrinp]:
+        what_to_do_if_user_is_incompetent_and_does_a_bad_input(False)
+    if inp3 not in validInputs[usrinp]:
+        what_to_do_if_user_is_incompetent_and_does_a_bad_input(False)
+    conv = input("what number would you like to convert from?: ")
+
     if inp2 == "c" and inp3 == "c":
         output(c_c, conv)
     elif inp2 == "c" and inp3 == "k":
